@@ -1,0 +1,31 @@
+/* Base Styles */
+:root {
+  --primary: #330066c7; /* Wimbledon purple */
+  --secondary: #6a0dad; /* Lighter purple */
+  --accent: #d8bfd8; /* Thistle accent */
+  --light: #ffffff;
+  --dark: #222222;
+  --success: #4CAF50;
+  --error: #f44336;
+  --warning: #FFC107;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header & Navigation */
+header {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
