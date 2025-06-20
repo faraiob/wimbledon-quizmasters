@@ -95,3 +95,14 @@ const questions = [
   }
 ];
 
+//Quiz set variables
+let currentQuestion = {};
+let availableQuestions = [];
+let score = 0;
+let questionCount = 0;
+let timer;
+let timeLeft = 30;
+let quizActive = false;
+let userName = "";
+let questionOrder = [];
+let currentQuestionIndex = 0;
