@@ -204,4 +204,136 @@ footer {
 .footer-links a:hover {
   text-decoration: underline;
 }
+.social-links {
+  display: none; /* Hide social links in single-line footer */
+}
 
+.copyright {
+  display: none; /* Hide copyright in single-line footer */
+}
+
+/* Add margin to main content to prevent footer overlap */
+main {
+  margin-bottom: 3rem;
+}
+}
+/* credit to:Srinivasa Rao Pavuluri */
+/* Result Popup */
+#result-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.result-content {
+  background-color: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+.result-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 1rem 0;
+}
+/* credit to :Srinivasa Rao Pavuluri */
+/* Name Modal */
+#name-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+z-index: 1000;
+}
+.modal-content {
+  background-color: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+#user-name {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Accessibility Features */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+.container {
+margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
