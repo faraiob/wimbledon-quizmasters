@@ -303,6 +303,96 @@ function showSection(sectionId) {
     if (focusable) focusable.focus();
   }
 }
+function startQuizWithName() {
+  const nameInput = document.getElementById('user-name');
+  if (!nameInput.value.trim()) {
+    alert("Please enter your name to continue");
+    return;
+  }
+  
+  userName = nameInput.value.trim();
+  nameModal.style.display = 'none';
+  
+  // Show user name in header credit:Srinivasa Pavuluri
+  userDisplay.textContent = `Playing as: ${userName}`;
+  userDisplay.style.display = 'block';
+  
+  resetQuizState();
+  showSection('quiz-box');
+  
+// Show welcome message with name and random quote
+  const welcomeQuote = getRandomWelcomeQuote();
+  questionEl.innerHTML = `<p>Welcome, ${userName}!</p><p><em>"${welcomeQuote}"</em></p>`;
 
+setTimeout(showQuestion, 3000); // Show first question after 3 seconds
+}
 
+function startQuiz() {
+  nameModal.style.display = 'flex';
+  document.getElementById('user-name').focus();
+}
 
+function restartQuiz() {
+  closeResult();
+  resetQuizState();
+  showSection('quiz-box');
+
+// Show welcome message again
+  const welcomeQuote = getRandomWelcomeQuote();
+  questionEl.innerHTML = `<p>Welcome back, ${userName}!</p><p><em>"${welcomeQuote}"</em></p>`;
+  
+  setTimeout(showQuestion, 2000); // Show first question after 2 seconds
+}
+
+function submitEnquiry(event) {
+  event.preventDefault();
+  
+  // Basic form validation
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  
+  if (!name || !email || !message) {
+    alert('Please fill in all fields');
+    return;
+  }
+// Email validation
+  if (!email.includes('@') || !email.includes('.')) {
+    alert('Please enter a valid email address');
+    return;
+  }
+
+  //Credit Srinivasa Pavuluri 
+  // In a real app, you would send this data to a server
+  alert("Thank you for your enquiry! We'll get back to you soon.");
+  document.getElementById('enquiryForm').reset();
+  showSection('home');
+}
+
+// credit Srinivasa Pavuluri 
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  showSection('home');
+  nameModal.style.display = 'none';
+  
+  // credit Srinivasa Pavuluri
+  // Add keyboard navigation for quiz options
+  document.addEventListener('keydown', (e) => {
+    if (quizActive && (e.key === '1' || e.key === '2' || e.key === '3')) {
+      const index = parseInt(e.key) - 1;
+      const buttons = optionsEl.querySelectorAll('button');
+      if (buttons[index]) {
+        buttons[index].click();
+      }
+    }
+  });
+});
+
+// credit Srinivasa Pavuluri
+// Expose functions to global scope for HTML onclick handlers
+window.startQuiz = startQuiz;
+window.startQuizWithName = startQuizWithName;
+window.showSection = showSection;
+window.closeResult = closeResult;
+window.submitEnquiry = submitEnquiry;
+window.restartQuiz = restartQuiz;
