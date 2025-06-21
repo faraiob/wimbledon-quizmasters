@@ -95,7 +95,7 @@ const questions = [
   }
 ];
 
-//Quiz set variables
+//Quiz state variables
 let currentQuestion = {};
 let availableQuestions = [];
 let score = 0;
@@ -106,3 +106,115 @@ let quizActive = false;
 let userName = "";
 let questionOrder = [];
 let currentQuestionIndex = 0;
+
+// DOM elements
+const quizBox = document.getElementById('quiz-box');
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('timer');
+const progressBar = document.getElementById('progress-bar');
+const resultPopup = document.getElementById('result-popup');
+const resultScore = document.getElementById('result-score');
+const resultMessage = document.getElementById('result-message');
+const nameModal = document.getElementById('name-modal');
+const userDisplay = document.getElementById('user-display');
+
+// Utility functions credit: Srinivasa Rao Pavuluri)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function resetQuizState() {
+  score = 0;
+  questionCount = 0;
+  quizActive = true;
+  scoreEl.textContent = `Score: ${score}/${questions.length}`;
+  updateProgressBar();
+  
+  // Create a new randomized order for the questions(credit: Srinivasa Pavuluri
+  questionOrder = Array.from({length: questions.length}, (_, i) => i);
+  shuffleArray(questionOrder);
+  
+  currentQuestionIndex = 0;
+}
+
+function updateProgressBar() {
+  progressBar.style.width = `${(questionCount / questions.length) * 100}%`;
+}
+
+function getRandomWelcomeQuote() {
+  const quotes = [
+    "The ball is in your court now!",
+    "Let's see how well you know Wimbledon!",
+    "Game, set, match - let's begin!",
+    "Ace your Wimbledon knowledge!",
+    "Break point for your tennis trivia skills!",
+    "Love-40 down? Time to make a comeback!",
+    "Deuce! It's all tied up in your mind!"
+  ];
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+// Timer functions credit: Srinivasa Pavuluri
+function startTimer() {
+  clearInterval(timer);
+  timeLeft = 30;
+  timerEl.textContent = `Time: ${timeLeft}s`;
+  
+  timer = setInterval(() => {
+    timeLeft--;
+    timerEl.textContent = `Time: ${timeLeft}s`;
+    
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      handleTimeout();
+    }
+  }, 1000);
+}
+
+function handleTimeout() {
+  const buttons = optionsEl.querySelectorAll('button');
+  buttons.forEach(button => {
+    button.disabled = true;
+    if (button.textContent === currentQuestion.answer) {
+      button.classList.add('correct');
+    }
+  });
+  
+  questionCount++;
+  if (questionCount < questions.length) {
+    setTimeout(showQuestion, 1500);
+} else {
+    showResult();
+  }
+}
+
+// Quiz functions
+function showQuestion() {
+  if (!quizActive) return;
+  
+  if (questionCount >= questions.length) {
+    showResult();
+    return;
+  }
+
+  // Get question based on current order
+  const questionIndex = questionOrder[currentQuestionIndex];
+  currentQuestion = questions[questionIndex];
+  currentQuestionIndex++;
+  
+  // Display question with sequential numbering (1-13) but questions in random order
+  questionEl.innerHTML = `<p>${questionCount + 1}. ${currentQuestion.q}</p>`;
+  optionsEl.innerHTML = '';
+
+  // Add image if available
+  if (currentQuestion.image) {
+    const img = document.createElement('img');
+    img.src = currentQuestion.image;
+    img.alt = currentQuestion.alt || 'Question image';
+    optionsEl.appendChild(img);
+  }
