@@ -218,3 +218,91 @@ function showQuestion() {
     img.alt = currentQuestion.alt || 'Question image';
     optionsEl.appendChild(img);
   }
+// Create answer buttons
+  shuffleArray([...currentQuestion.options]).forEach(option => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.onclick = () => checkAnswer(option);
+    optionsEl.appendChild(button);
+  });
+
+  startTimer();
+}
+// credit: Srinivasa Pavuluri
+function checkAnswer(selectedOption) {
+  if (!quizActive) return;
+  
+  clearInterval(timer);
+  const buttons = optionsEl.querySelectorAll('button');
+buttons.forEach(button => {
+    button.disabled = true;
+    if (button.textContent === currentQuestion.answer) {
+      button.classList.add('correct');
+    } else if (button.textContent === selectedOption && selectedOption !== currentQuestion.answer) {
+      button.classList.add('incorrect');
+    }
+  });
+//credit: Srinivasa Pavuluri
+  if (selectedOption === currentQuestion.answer) {
+    score++;
+    scoreEl.textContent = `Score: ${score}/${questions.length}`;
+  }
+
+  questionCount++;
+  updateProgressBar();
+  
+  if (questionCount < questions.length) {
+    setTimeout(showQuestion, 1500);
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  quizActive = false;
+  clearInterval(timer);
+  
+  resultScore.textContent = `${score}/${questions.length}`;
+
+  // Set result message based on score
+  const percentage = (score / questions.length) * 100;
+  let message;
+  if (percentage >= 85) {
+    message = `Ace performance ${userName}! You're a true Wimbledon expert!`;
+  } else if (percentage >= 70) {
+    message = `Great job ${userName}! You know your Wimbledon facts well!`;
+  } else if (percentage >= 50) {
+    message = `Good effort ${userName}! You've got some Wimbledon knowledge!`;
+  } else {
+    message = `Keep practicing ${userName}! Watch more matches to improve!`;
+  }
+  
+  resultMessage.textContent = message;
+  resultPopup.style.display = 'flex';
+}
+function closeResult() {
+  resultPopup.style.display = 'none';
+}
+// Navigation functions
+function showSection(sectionId) {
+  // Close any open popups/modals
+  resultPopup.style.display = 'none';
+  nameModal.style.display = 'none';
+  
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('quiz-box').style.display = 'none';
+  document.getElementById('enquiry-form').style.display = 'none';
+  
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.style.display = 'block';
+    section.setAttribute('aria-live', 'polite');
+    
+    // Focus first interactive element for better accessibility
+    const focusable = section.querySelector('button, [href], input, select, textarea');
+    if (focusable) focusable.focus();
+  }
+}
+
+
+
