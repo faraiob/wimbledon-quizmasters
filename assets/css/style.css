@@ -68,6 +68,7 @@ nav a:hover, nav a:focus {
   color: var(--accent);
   margin-left: 1rem;
 }
+/* credit to:Srinivasa Rao Pavuluri */
 /* Main Content */
 .container {
   max-width: 800px;
