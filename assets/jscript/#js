@@ -363,7 +363,7 @@ function submitEnquiry(event) {
   }
 
   //Credit Srinivasa Pavuluri 
-  // In a real app, you would send this data to a server
+  //  data to a server
   alert("Thank you for your enquiry! We'll get back to you soon.");
   document.getElementById('enquiryForm').reset();
   showSection('home');
