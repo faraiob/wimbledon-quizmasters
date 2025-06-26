@@ -4,21 +4,21 @@ const questions = [
     q: "At Wimbledon how many tennis courts are there?",
     options: ["25", "12", "38"],
     answer: "38",
-    image: "images/question1.jpg",
+    image: "assets/images/question1.jpg",
     alt: "Aerial view of Wimbledon courts"
   },
   {
     q: "At Wimbledon which colour tennis ball did they use to use?",
     options: ["red", "green", "white"],
     answer: "white",
-    image: "images/question2.jpg",
+    image: "assets/images/question2.jpg",
     alt: "Vintage white tennis balls used at Wimbledon"
   },
   {
     q: "Martina Navratilova won the Ladies' Singles competition how many times?",
     options: ["6 times", "5 times", "9 times"],
     answer: "9 times",
-    image: "images/question3.jpg",
+    image: "assets/images/question3.jpg",
     alt: "Martina Navratilova holding a Wimbledon trophy"
   },
   {
@@ -31,7 +31,7 @@ const questions = [
     q: "What is the name of the camera system that checks ball placement?",
     options: ["Cyclops", "Hawkeye", "Ball machine"],
     answer: "Hawkeye",
-    image: "images/question5.jpg",
+    image: "assets/images/question5.jpg",
     alt: "Hawkeye system in use at Wimbledon"
   },
   {
@@ -42,7 +42,7 @@ const questions = [
       "C. Serena Williams holds doubles aces record."
     ],
     answer: "C. Serena Williams holds doubles aces record.",
-    image: "images/question6.jpg",
+    image: "assets/images/question6.jpg",
     alt: "Serena Williams playing at Wimbledon"
   },
   {
@@ -73,14 +73,14 @@ const questions = [
     q: "What is the exact grass height?",
     options: ["8mm", "7mm", "5mm"],
     answer: "8mm",
-    image: "images/question11.jpg",
+    image: "assets/images/question11.jpg",
     alt: "Close-up of Wimbledon grass"
   },
   {
     q: "The longest match lasted over 11 hours. Which year was this in?",
     options: ["2012", "2009", "2010"],
     answer: "2010",
-    image: "images/question12.jpg",
+    image: "assets/images/question12.jpg",
     alt: "John Isner and Nicolas Mahut during their record-breaking match"
   },
   {
