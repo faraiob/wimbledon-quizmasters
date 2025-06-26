@@ -1,6 +1,6 @@
 /* Base Styles */
 :root {
-  --primary: #330066c7; /* Wimbledon purple */
+  --primary: #330066; /* Wimbledon purple */
   --secondary: #6a0dad; /* Lighter purple */
   --accent: #d8bfd8; /* Thistle accent */
   --light: #ffffff;
@@ -15,10 +15,12 @@
   margin: 0;
   padding: 0;
 }
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f6ff;
+  color: var(--dark);
+  line-height: 1.6;
 }
 
 /* Header & Navigation */
@@ -37,6 +39,7 @@ nav {
   margin: 0 auto;
   padding: 0 2rem;
 }
+
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
@@ -83,26 +86,39 @@ nav a:hover, nav a:focus {
 #home {
   display: block;
 }
+
 h1, h2, h3 {
   color: var(--primary);
   text-align: center;
   margin-bottom: 1.5rem;
 }
+
 h1 {
   font-size: 2.5rem;
-background: linear-gradient(to right, var(--primary), var(--secondary));
+  background: linear-gradient(to right, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-background: linear-gradient(to right, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
+/* Buttons */
+button, .btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: var(--secondary);
+  color: var(--light);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
+
 button:hover, button:focus, .btn:hover, .btn:focus {
   background-color: var(--primary);
   transform: translateY(-2px);
   outline: none;
 }
+
 /* Quiz Styles */
 .question {
   font-size: 1.3rem;
@@ -110,6 +126,7 @@ button:hover, button:focus, .btn:hover, .btn:focus {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 .options {
   display: grid;
   grid-template-columns: 1fr;
@@ -131,14 +148,16 @@ button:hover, button:focus, .btn:hover, .btn:focus {
   color: var(--dark);
   transform: none;
 }
+
 .options img {
   width: 100%;
-max-height: 250px;
+  max-height: 250px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
   border: 1px solid #ddd;
 }
+
 /* Score & Progress */
 .score-container {
   display: flex;
@@ -166,6 +185,7 @@ max-height: 250px;
   border-radius: 5px;
   transition: width 0.3s ease;
 }
+
 /* Feedback States */
 .correct {
   background-color: var(--success) !important;
@@ -176,6 +196,8 @@ max-height: 250px;
   background-color: var(--error) !important;
   color: var(--light) !important;
 }
+
+/* Footer */
 /* Footer */
 footer {
   background-color: var(--primary);
@@ -205,6 +227,7 @@ footer {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
 .social-links {
   display: none; /* Hide social links in single-line footer */
 }
@@ -219,7 +242,6 @@ main {
 }
 }
 
-/* Result Popup */
 /* Result Popup 
 #result-popup {
   position: fixed;
@@ -352,6 +374,7 @@ main {
     width: 100%;
   }
 }
+
 /* Name Modal */
 #name-modal {
   position: fixed;
@@ -363,8 +386,9 @@ main {
   display: none;
   justify-content: center;
   align-items: center;
-z-index: 1000;
+  z-index: 1000;
 }
+
 .modal-content {
   background-color: var(--light);
   padding: 2rem;
@@ -408,8 +432,9 @@ z-index: 1000;
     width: 100%;
     justify-content: space-around;
   }
-.container {
-margin: 1rem;
+  
+  .container {
+    margin: 1rem;
     padding: 1.5rem;
   }
   
