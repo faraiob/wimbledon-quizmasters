@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wimbledon QuizMasters</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
@@ -41,7 +41,7 @@
       <div class="options" id="options"></div>
     </div>
 
-    <div class="container" id="enquiry-form">
+    <!--<div class="container" id="enquiry-form">
       <h2>Enquiry Form</h2>
       <form id="enquiryForm" onsubmit="submitEnquiry(event)">
         <label for="name" class="sr-only">Your Name</label>
@@ -55,16 +55,51 @@
         
         <button type="submit">Submit</button>
       </form>
+    </div>-->
+	
+	<div class="container enquiry-container" id="enquiry-form">
+  <h2>Enquiry Form</h2>
+  <form id="enquiryForm" onsubmit="submitEnquiry(event)">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
     </div>
+    
+    <div class="form-group">
+      <label for="email">Your Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Your Message</label>
+      <textarea id="message" placeholder="Type your message here" required></textarea>
+    </div>
+    
+    <button type="submit">Send Enquiry</button>
+  </form>
+</div>
+
+<!-- Thank You Popup -->
+<div id="thankyou-popup" class="popup" style="display: none;">
+  <div class="popup-content">
+    <h2>Thank You!</h2>
+    <p>Your enquiry has been submitted successfully.</p>
+    <button onclick="closeThankYou()">Close</button>
+  </div>
+</div>
+
+	
+	
   </main>
  
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-papUoCk3yR+5GgY6K+6H6F9+1CqKbJGQ3M6UGzC+4uK5oN5SxZ5bwC5M9GJ1z1MYqf9uTGl3i0JhWdli4uUclw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
  <footer>
   <div class="footer-links">
     <a href="#" target="_blank" rel="noopener noreferrer">Terms</a>
     <a href="#" target="_blank" rel="noopener noreferrer">Privacy</a>
-    <a href="#" target="_blank" rel="noopener noreferrer">FAQ</a>
+    <a href="faq.html" target="_blank" rel="noopener noreferrer">FAQ</a>
     <a href="https://www.facebook.com/wimbledon/?locale=en_GB
 
  " target="_blank" rel="noopener noreferrer">
@@ -77,6 +112,7 @@
   </div>
 </footer>
 
+
   <!-- Name Input Modal -->
   <div id="name-modal">
     <div class="modal-content">
@@ -87,8 +123,8 @@
     </div>
   </div>
 
-  <!-- Result Popup credit Srinivasa Pavuluri-->
-  <div id="result-popup">
+  <!-- Result Popup -->
+ <!-- <div id="result-popup">
     <div class="result-content">
       <button class="close-btn" onclick="closeResult()" aria-label="Close results">×</button>
       <h2>Quiz Completed!</h2>
@@ -97,9 +133,20 @@
       <button onclick="restartQuiz()">Try Again</button>
       <button onclick="closeResult(); showSection('home')">Back to Home</button>
     </div>
+  </div> -->
+<!-- Result Popup -->
+<div id="result-popup">
+  <div class="result-content">
+    <button class="close-btn" onclick="closeResult()" aria-label="Close results">×</button>
+    <h2>Quiz Completed!</h2>
+    <div class="result-score" id="result-score">0/13</div>
+    <p id="result-message"></p>
+    <div class="result-buttons">
+      <button onclick="restartQuiz()">Try Again</button>
+      <button onclick="closeResult(); showSection('home')">Back to Home</button>
+    </div>
   </div>
-
-  <script src="jscript/js"></script>
+</div>
+  <script src="js/script.js"></script>
 </body>
 </html>
-
