@@ -120,7 +120,6 @@ const resultMessage = document.getElementById('result-message');
 const nameModal = document.getElementById('name-modal');
 const userDisplay = document.getElementById('user-display');
 
-// Utility functions credit: Srinivasa Rao Pavuluri)
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -136,13 +135,11 @@ function resetQuizState() {
   scoreEl.textContent = `Score: ${score}/${questions.length}`;
   updateProgressBar();
   
-  // Create a new randomized order for the questions(credit: Srinivasa Pavuluri
   questionOrder = Array.from({length: questions.length}, (_, i) => i);
   shuffleArray(questionOrder);
   
   currentQuestionIndex = 0;
 }
-// Credit: Srinivasa Pavuluri
 function updateProgressBar() {
   progressBar.style.width = `${(questionCount / questions.length) * 100}%`;
 }
@@ -159,7 +156,6 @@ function getRandomWelcomeQuote() {
   ];
   return quotes[Math.floor(Math.random() * quotes.length)];
 }
-// Timer functions credit: Srinivasa Pavuluri
 function startTimer() {
   clearInterval(timer);
   timeLeft = 30;
@@ -228,7 +224,6 @@ function showQuestion() {
 
   startTimer();
 }
-// credit: Srinivasa Pavuluri
 function checkAnswer(selectedOption) {
   if (!quizActive) return;
   
@@ -242,7 +237,6 @@ buttons.forEach(button => {
       button.classList.add('incorrect');
     }
   });
-//credit: Srinivasa Pavuluri
   if (selectedOption === currentQuestion.answer) {
     score++;
     scoreEl.textContent = `Score: ${score}/${questions.length}`;
@@ -313,7 +307,6 @@ function startQuizWithName() {
   userName = nameInput.value.trim();
   nameModal.style.display = 'none';
   
-  // Show user name in header credit:Srinivasa Pavuluri
   userDisplay.textContent = `Playing as: ${userName}`;
   userDisplay.style.display = 'block';
   
@@ -362,20 +355,18 @@ function submitEnquiry(event) {
     return;
   }
 
-  //Credit Srinivasa Pavuluri 
   //  data to a server
   alert("Thank you for your enquiry! We'll get back to you soon.");
   document.getElementById('enquiryForm').reset();
   showSection('home');
 }
 
-// credit Srinivasa Pavuluri 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   showSection('home');
   nameModal.style.display = 'none';
   
-  // credit Srinivasa Pavuluri
+ 
   // Add keyboard navigation for quiz options
   document.addEventListener('keydown', (e) => {
     if (quizActive && (e.key === '1' || e.key === '2' || e.key === '3')) {
@@ -404,7 +395,6 @@ function closeThankYou() {
 
 
 
-// credit Srinivasa Pavuluri
 // Expose functions to global scope for HTML onclick handlers
 window.startQuiz = startQuiz;
 window.startQuizWithName = startQuizWithName;
