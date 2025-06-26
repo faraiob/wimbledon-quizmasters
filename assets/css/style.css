@@ -220,6 +220,7 @@ main {
 }
 /* credit to:Srinivasa Rao Pavuluri */
 /* Result Popup */
+/* Result Popup 
 #result-popup {
   position: fixed;
   top: 0;
@@ -241,24 +242,115 @@ main {
   max-width: 500px;
   width: 90%;
   position: relative;
+}*/
+
+/* Result Popup - Updated Version */
+#result-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto; /* Allows scrolling if content is too tall */
 }
 
-.close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--dark);
+.result-content {
+  background-color: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  margin: 20px auto; /* Ensures proper centering */
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
 }
 
-.result-score {
-  font-size: 3rem;
-  font-weight: bold;
-  color: var(--primary);
-  margin: 1rem 0;
+/* Center buttons horizontally */
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .result-content {
+    padding: 1.5rem;
+  }
+  
+  .result-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .result-buttons button {
+    width: 100%;
+  }
+}
+/* Result Popup - Guaranteed Centering */
+#result-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.result-content {
+  background-color: var(--light);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  margin: auto; /* Crucial for centering */
+  transform: none !important; /* Override any transforms */
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+
+/* Button container */
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .result-content {
+    padding: 1.5rem;
+  }
+  
+  .result-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .result-buttons button {
+    width: 100%;
+  }
 }
 /* credit to :Srinivasa Rao Pavuluri */
 /* Name Modal */
@@ -337,4 +429,86 @@ margin: 1rem;
     align-items: center;
     gap: 0.5rem;
   }
+}
+
+
+
+.enquiry-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.enquiry-container h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--primary);
+}
+
+.enquiry-container .form-group {
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+.enquiry-container input,
+.enquiry-container textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.enquiry-container button {
+  padding: 0.9rem 1.8rem;
+  font-size: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.enquiry-container button:hover {
+  background-color: var(--secondary);
+}
+
+/* Thank You Popup */
+#thankyou-popup.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content h2 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.popup-content button {
+  margin-top: 1rem;
+  background-color: var(--secondary);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
