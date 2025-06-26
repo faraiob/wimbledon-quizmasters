@@ -388,6 +388,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+function submitEnquiry(event) {
+  event.preventDefault();
+
+  // Optional: form validation here
+
+  document.getElementById("enquiryForm").reset();
+  document.getElementById("thankyou-popup").style.display = "flex";
+}
+
+function closeThankYou() {
+  document.getElementById("thankyou-popup").style.display = "none";
+}
+
+
+
 // credit Srinivasa Pavuluri
 // Expose functions to global scope for HTML onclick handlers
 window.startQuiz = startQuiz;
